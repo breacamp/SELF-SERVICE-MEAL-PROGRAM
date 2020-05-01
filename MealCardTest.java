@@ -5,10 +5,15 @@
  */
 package mealcardtest;
 
+
+import java.util.Random;
 import java.util.Scanner;
 import myutility.Studentclass;//using another class from another package
 import myutility.MealCard;    
-
+import myutility.RandomWindowGEN;
+import myutility.Reciept;
+import myutility.RecieptFactory;
+ 
   
 
 /**
@@ -24,17 +29,23 @@ String StudentAddress,StudentName;
     char y;
     int c;
     double d;
+    char choice;
     
     public static void main(String[] args) {
-    int n=0;    
+    int n=0;  
+    
      while (n==0)
      {
+       
           // import the other class
       char response = 'y';
         
      Studentclass myObj= new Studentclass();
      MealCard mypoint=new MealCard();
+     RecieptFactory object1= new RecieptFactory();
+     RandomWindowGEN object= RandomWindowGEN.getInstance();
      Scanner user_input=new Scanner(System.in);
+     
      System.out.println("Enter Student Identification number (4 digits):");
      String k =user_input.nextLine(); 
        myObj.setStudentID(k);
@@ -56,6 +67,33 @@ String StudentAddress,StudentName;
            System.out.println("Okay! You have been assigned a value of $15");
            double d=15;
            mypoint.Mealplan(d);
+         object.showMessage();
+         
+    System.out.println("How would you like your receipt? Text-(T),Email(E),Print(T) ");
+      response = user_input.next().charAt(0);
+               
+         
+      switch(response) 
+      {
+         case 'T':
+         case 't':
+             Reciept reciept1=object1.getShape("Text");
+             reciept1.reciept();
+             break;
+             
+         case 'E':
+         case 'e':
+             Reciept reciept2=object1.getShape("Email");
+             reciept2.reciept();
+             break;
+       case 'P':
+         case 'p':
+             Reciept reciept3=object1.getShape("Print");
+             reciept3.reciept();
+      break;
+      }
+      
+        
        }
 //////////////////////////////////////////////////////////////////////////////   
    else {
@@ -74,6 +112,7 @@ String StudentAddress,StudentName;
            System.out.println("Okay! You have been assigned a value of $15");
            double d=15;
            mypoint.Mealplan(d);
+          
        }
          }
        
@@ -81,12 +120,15 @@ String StudentAddress,StudentName;
            response = user_input.next().charAt(0);
            if(response =='n'||response=='n')
            {
-              System.out.println("Have a great Day!");
+   
+              System.out.println("Thank you! Have a great Day!");
               n=1;
            }
            
      } 
         // TODO code application logic here
-    }
-    
+        
+      
+    }   
+
 }

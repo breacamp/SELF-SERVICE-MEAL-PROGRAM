@@ -5,6 +5,9 @@
  */
 package myutility;
 import java.util.Scanner;
+import java.util.Random;
+import myutility.RecieptFactory;
+
 /**
  *
  * @author 18062
@@ -34,7 +37,7 @@ public class MealCard {
         double qL=2.50;
         double p=1.00;
        
-        char choice;
+       char want;
         char response;
         char size;
         
@@ -52,8 +55,8 @@ public class MealCard {
                 "H-SIDE OF FRUIT $3"+"\n"+"I-WATER (FREE)"+"\n"+"Q-SODA 2$"+"\n"+"J-SWEET TEA $2");
         System.out.println("Please make your selection, One at a time!");
         System.out.println("Remember you can add points anytime by pressing 'z'.");
-        choice = user_input.next().charAt(0);
-           this.MakeChoice(d, choice);
+        want = user_input.next().charAt(0);
+           this.MakeChoice(d, want);
         
        
     }
@@ -207,12 +210,17 @@ public class MealCard {
        else
        {
            System.out.println("\nYour remaining balance is"+" "+d);
-           System.out.println("Please pick up your items at the window. HAVE A GREAT DAY");
+           
+       
            n=1;
        }
        }
        }
      
+
     
- 
+   
+    
+    
 }
+
